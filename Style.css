@@ -1,0 +1,34 @@
+body {
+  background: rgb(97, 97, 99);
+  background: linear-gradient(
+    270deg,
+    rgba(23, 23, 24, 0.6587009803921569) 0%,
+    rgba(35, 36, 36, 0.8267682072829132) 17%
+  );
+  font-family: "Courier New", Courier, monospace;
+}
+
+.container {
+  width: 31.25rem;
+  height: 31.25rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  color: white;
+}
+input {
+  background-color: rgb(42, 42, 43);
+  color: white;
+  padding: 1rem 0.0625rem;
+}
+button {
+  margin-top: 1em;
+  background-color: black;
+  color: white;
+  padding: 1rem 0.0625rem;
+  border: none;
+}
+h2 {
+  align-self: center;
+}
