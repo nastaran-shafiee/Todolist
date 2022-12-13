@@ -6,6 +6,7 @@ body {
     rgba(35, 36, 36, 0.8267682072829132) 17%
   );
   font-family: "Courier New", Courier, monospace;
+  box-sizing: border-box;
 }
 
 .container {
@@ -31,4 +32,128 @@ button {
 }
 h2 {
   align-self: center;
+}
+.todo {
+  width: 43.75rem;
+  height: 8.5rem;
+  border: 3px solid gray;
+  color: white;
+  background-color: rgb(42, 42, 43);
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 0.625rem;
+  margin-top: 10px;
+}
+.todo p {
+  font-size: 0.7em;
+}
+header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+header h3 {
+  align-self: center;
+}
+.header1 {
+  display: flex;
+  gap: 5px;
+}
+span {
+  color: gray;
+  font-size: 0.875rem;
+}
+.timer {
+  color: rgb(165, 163, 163);
+  font-size: 1rem;
+}
+.timer1 {
+  color: pink;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+.pink {
+  background-color: #666;
+  color: white;
+}
+.page-link {
+  color: white !important;
+  background-color: rgb(42, 42, 43) !important;
+  border: 3px solid gray !important;
+}
+.active {
+  background-color: pink !important;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: pink;
+  color: rgb(63, 62, 62);
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 12.5rem;
+  bottom: 150px;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 1.25rem;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }

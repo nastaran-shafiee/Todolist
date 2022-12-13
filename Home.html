@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="Style.css" />
   </head>
   <body>
-    <div class="container">
+    <form class="container" id="form1">
       <h2>Todolist</h2>
       <label for="title">Title</label>
       <input type="text" id="title" />
@@ -17,7 +17,13 @@
       <input type="text" id="description" />
       <label for="time">Time</label>
       <input type="time" id="time" />
-      <button id="btn">submit</button>
+      <button id="btn" type="submit" onclick="myFunction()">submit</button>
+    </form>
+
+    <div id="snackbar">
+      <p>successfull</p>
+      <p>The todo successfully submitted.</p>
     </div>
+    <script src="Script2.js"></script>
   </body>
 </html>
