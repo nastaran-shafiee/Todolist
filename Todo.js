@@ -7,12 +7,12 @@ const form1 = document.getElementById("form1");
 const containerTodo = document.getElementById("containerTodo");
 DEFAULT_PAGE_SIZE = 4;
 let total1;
-
+let countData = 10;
 async function fetchTodoInformations() {
   try {
     const response = await fetch(`${API_URL}/todolist`);
     const data = await response.json();
-    test(fetchTodoInformations);
+
     return data;
   } catch (e) {
     console.log(e);
@@ -29,14 +29,7 @@ function test(data) {
   console.log(array);
 }
 
-// console.log(fetchTodoInformations());
-// console.log("salam");
-// console.log(array.length);
-
-// let countData = result.length;
-// console.log(countData);
-
-async function addToDom(item) {
+function addToDom(item) {
   let time = item.createAt;
   console.log(time);
   const date = new Date(time);
@@ -58,11 +51,70 @@ async function addToDom(item) {
       <span>${dateFormat}</span>
     </header>
     <p class = "timer">time to do that in <span class= "timer1" > ${item.dueDate} </span></p>
+    <div class="main">
     <p>
   ${item.description}
     </p>
-  </div>`;
+    <div class="main2">
+    <span class="material-symbols-outlined" id="edit" onclick="redirect(${item.id})"> edit </span>
+   
+    <button
+      type="button"
+      class="btn btn-danger btn-sm"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      
+    >
+   delete
+    </button>
+
+
+    </div>
+    </div>
+  </div>
+  
+  <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Deleet</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+          <p>do you want to delet this item</p>
+          <p>${item.title}  <span>${item.dueDate}</span>  </p>
+          </div>
+          
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-danger" onclick="deleteProduct()" >Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  `;
   containerTodo.insertAdjacentHTML("beforeend", html);
+  // redirect(item.id);
 }
 readProducts();
 
@@ -76,6 +128,7 @@ async function readProducts(page = 1, queryParam) {
     );
     const data = await res.json();
     data.forEach(addToDom);
+
     createPagination(countData, page);
   } catch (e) {
     console.log(e);
@@ -103,6 +156,13 @@ document.querySelector("ul.pagination").addEventListener("click", (e) => {
   console.log("hi");
 });
 
-const sports = ["soccer", "baseball"];
-const total = sports.push("football", "swimming");
-console.log(sports.length);
+// remove------------------------------------------------
+async function deleteProduct() {
+  console.log("object");
+
+  // try {
+  //   await fetch(`${API_URL}/todolist/${productId}`, { method: "DELETE" });
+  // } catch (e) {
+  //   console.log(e.message);
+  // }
+}

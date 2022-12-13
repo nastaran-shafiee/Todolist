@@ -157,3 +157,26 @@ nav {
     opacity: 0;
   }
 }
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+#delete {
+  color: rgb(199, 63, 63);
+}
+#edit {
+  color: rgb(221, 211, 211);
+}
+.main2 {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.hiden {
+  display: none;
+}
+
+.dager {
+  background-color: red;
+}
