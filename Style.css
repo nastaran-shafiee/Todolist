@@ -35,7 +35,7 @@ h2 {
 }
 .todo {
   width: 43.75rem;
-  height: 8.5rem;
+  height: 8rem;
   border: 3px solid gray;
   color: white;
   background-color: rgb(42, 42, 43);
@@ -65,6 +65,8 @@ span {
   font-size: 0.875rem;
 }
 .timer {
+  display: flex;
+  justify-content: space-between;
   color: rgb(165, 163, 163);
   font-size: 1rem;
 }
@@ -179,4 +181,22 @@ nav {
 
 .dager {
   background-color: red;
+}
+.home {
+  margin-top: 1.25rem !important;
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 30px !important;
+  margin-left: 20px;
+  font-family: "Courier New", Courier, monospace !important;
+}
+a:hover {
+  color: rgb(152, 149, 149) !important;
+}
+
+.font {
+  font-size: 0.625rem;
+}
+.btn2 {
+  color: rgb(234, 111, 111);
 }

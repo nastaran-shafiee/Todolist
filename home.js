@@ -5,7 +5,7 @@ const time1 = document.getElementById("time");
 const button = document.getElementById("btn");
 const form1 = document.getElementById("form1");
 const containerTodo = document.getElementById("containerTodo");
-DEFAULT_PAGE_SIZE = 4;
+let DEFAULT_PAGE_SIZE = 4;
 const countData = 9;
 const btn1 = document.getElementById("btn1");
 async function fetchTodoInformations() {
@@ -67,20 +67,29 @@ function myFunction() {
 
 //edit--------------------------------------------------------------------------------------------------------------------------------------------
 const queryString = window.location.search;
-console.log(queryString);
 const urlParam = new URLSearchParams(queryString).get("id");
-console.log(urlParam);
+
 async function readProduct(id) {
-  if (urlParam) {
-    document.getElementById("btn1").hidden = false;
-    document.getElementById("btn").hidden = true;
-    try {
-      const res = await fetch(`${API_URL}/todolist/${id}`);
-      const data = await res.json();
-      addToDom2(data);
-    } catch (e) {
-      console.log(e);
+  try {
+    const res = await fetch(`${API_URL}/todolist/${id}`);
+    const data = await res.json();
+    if (res.status === 404) {
+      window.location.replace(`http://127.0.0.1:5500/404.html`);
+    } else if (res.status === 500) {
+      let url = window.location.href.split("?");
+      if (url[1]) {
+        window.location = url[0];
+      }
+    } else {
+      if (urlParam) {
+        document.getElementById("btn1").hidden = false;
+        document.getElementById("btn").hidden = true;
+
+        addToDom2(data);
+      }
     }
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -101,6 +110,7 @@ function gatherEditFormData() {
     title: title1.value,
     description: description1.value,
     dueDate: time1.value,
+    updateAt: new Date(),
   };
 }
 async function updateProduct(id) {
@@ -112,7 +122,6 @@ async function updateProduct(id) {
       body: JSON.stringify(updatedProduct1),
       headers: { "Content-Type": "application/json" },
     });
-    readProducts();
   } catch (e) {
     console.log(error.message);
   }
